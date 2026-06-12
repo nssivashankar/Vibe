@@ -67,10 +67,13 @@ class NotificationListenerService : NotificationListenerService() {
         val hasTimerText = text.contains(":") || title.contains(":")
         val isOngoingText = title.contains("ongoing") || text.contains("ongoing")
         
-        // We consider it "Answered" if:
-        // 1. It is not currently ringing/calling
-        // 2. AND (It has a system timer OR "ongoing" text OR a time pattern like 00:00 OR we are in-call mode)
-        val isAnswered = !isRinging && (hasChronometer || isOngoingText || hasTimerText || (isInCall && (isWhatsApp || isTelegram || isCallCategory)))
+        val isAnswered = if (isDialer && !isWhatsApp && !isTelegram) {
+            // For stock dialers, the chronometer is the most reliable signal for answered calls.
+            hasChronometer
+        } else {
+            // For VoIP apps, we need to be more flexible with text and audio mode checks.
+            !isRinging && (hasChronometer || isOngoingText || hasTimerText || (isInCall && (isWhatsApp || isTelegram || isCallCategory)))
+        }
 
         if (isAnswered) {
             if (!activeKeys.contains(key)) {
