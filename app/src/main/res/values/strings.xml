@@ -7,7 +7,7 @@
     <string name="vibe_at_end">Vibe at end</string>
     <string name="vibe_at_end_description">Vibrate when a call has ended.</string>
     <string name="filter_package_names">Filter packages</string>
-    <string name="filter_package_names_description">Only pass package names with \".dialer\" suffix.</string>
+    <string name="filter_package_names_description">Vibrate only for known dialer and VoIP apps.</string>
     <string name="vibe_pattern">pattern</string>
     <string name="vibe_pattern_error">Wait,Vibe..</string>
 </resources>

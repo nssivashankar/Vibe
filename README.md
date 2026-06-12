@@ -22,6 +22,7 @@ Tiny app to vibrate when a call is answered and/or has ended.
 
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
+* WhatsApp (com.whatsapp)
 
 ## Permissions
 
