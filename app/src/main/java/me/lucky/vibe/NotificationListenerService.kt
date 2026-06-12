@@ -69,9 +69,8 @@ class NotificationListenerService : NotificationListenerService() {
         
         // We consider it "Answered" if:
         // 1. It is not currently ringing/calling
-        // 2. AND (It has a system timer OR "ongoing" text OR a time pattern like 00:00)
-        // 3. OR it's a known call app, we are in-call mode, and the "Answer" button is gone.
-        val isAnswered = !isRinging && (hasChronometer || isOngoingText || hasTimerText || (isInCall && !hasAnswer && (isWhatsApp || isTelegram || isCallCategory)))
+        // 2. AND (It has a system timer OR "ongoing" text OR a time pattern like 00:00 OR we are in-call mode)
+        val isAnswered = !isRinging && (hasChronometer || isOngoingText || hasTimerText || (isInCall && (isWhatsApp || isTelegram || isCallCategory)))
 
         if (isAnswered) {
             if (!activeKeys.contains(key)) {
