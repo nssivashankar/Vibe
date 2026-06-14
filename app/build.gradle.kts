@@ -7,14 +7,12 @@ plugins {
 
 android {
     namespace = "me.lucky.vibe"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "me.lucky.vibe"
-        minSdk = 23
-        targetSdk = 36
+        minSdk = 24
+        targetSdk = 37
         versionCode = 18
         versionName = "1.2.0"
 
@@ -36,6 +34,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = false
+        }
     }
     lint {
         disable.add("MissingTranslation")
